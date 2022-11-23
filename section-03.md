@@ -21,8 +21,40 @@ legacy code, but going forwards it is all modules.
 
 Each source project is its own module with a `go.mod` that declares the module
 and its dependencies. The list versions that is produced as a result of resolving
-dependencies is put into `go.sum`. The resolver preferes the lowest compatible
-version. You can upgrade a dependency to the latest version via
+dependencies is put into `go.sum`.
+
+The `go.mod` file is created by initializing the local module:
+
+```shell
+go mod init danquah.dk/learngo/03-gomod
+```
+
+Direct dependencies are specified in the source-code.
+
+```go
+package hello
+
+// Direct dependency.
+import "rsc.io/quote"
+
+func Hello() string {
+    return quote.Hello()
+}
+```
+
+And is downloaded like so
+
+```shell
+# Get a specific dependency.
+go get rsc.io/quote
+
+# Get all
+go get
+```
+
+Indirect dependencies are detected automatically and are added to the `go.mod`/`go.sum`.
+
+You can upgrade a dependency to the latest version via.
 
 ```shell
 # Latest
