@@ -116,3 +116,76 @@ be evaluated into a value.
 // Statement
 n := 2 + 2
 ```
+
+### Zero value
+
+When a variable is declared it is always initialized to the "zero value" [see more](https://go.dev/ref/spec#The_zero_value)
+
+The zero-value is type specific:
+
+* `false` for booleans
+* `0` for numeric types
+* `""` for strings
+* `nil` for pointers, functions, interfaces, slices, channels, and maps.
+
+This dodges a lot of issues from C and a lot of other languages.
+
+### Type
+
+You *declare* a variable with an *identifier* (its name) that has a *type*.
+Go is statically typed, so a variable cannot change its type once it is declared.
+
+#### Strings
+
+Raw string literals are declared with back-quotes ``hi``, interpreted strings are
+placed between double quotes
+
+```go
+raw := `my raw
+string`
+interpreted := "my interpreted string"
+```
+
+
+#### Composite vs primitive
+
+Primitive types are the most basic data-types that are "built in". Composite
+types let us aggregate primitive types together to a more advanced type. Eg
+structs.
+
+
+### fmt
+
+The main (there are more) functions from fmt are
+
+* `Print` - print to output
+* `Sprint` - print to string
+* `Fprint` - print to a file
+
+They come in the following variant
+
+* "Basic" eg `Print`
+* "Formatted" eg `Printf`
+* "Print with newline" eg. `Println`
+
+[Formatting](https://pkg.go.dev/fmt#hdr-Printing) lets you format the output
+some of the often used formatting verbs are
+
+```text
+General:
+%v	the value in a default format
+	when printing structs, the plus flag (%+v) adds field names
+
+Boolean:
+%t	the word true or false
+
+Integer
+%d	base 10
+
+String
+%s	the uninterpreted bytes of the string or slice
+%q	a double-quoted string safely escaped with Go syntax
+```
+
+#### Creating types
+
