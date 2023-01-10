@@ -93,10 +93,10 @@ As pr the [spec](https://go.dev/ref/spec#Method_declarations)
 
 > A method is a function with a receive
 
-A method is delcared like so
+A method is declared like so
 
 ```go
-func (r reciver) identifier(parameters) (returntype) {
+func (r receiver) identifier(parameters) (returnType) {
   body
 }
 ```
