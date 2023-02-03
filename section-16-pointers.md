@@ -1,4 +1,4 @@
-# Section 15 - Pointers
+# Section 16 - Pointers
 
 We work with pointers by using the `&` and `*` operators.
 
@@ -85,16 +85,17 @@ callByPointer(structInstance)
 
 The compiler rejects the code to protect us from a potential bug. When `callByPointer`
 is called, it is passed a _copy_ of `structInstance`, meaning that any mutation done
-inside the `callByPointer` function is lost. The compiler can see that `callByPointer`
+inside the `takesPointer` method is lost. The compiler can see that `callByPointer`
 references the struct via an interface that explicitly has a receiver that wants a
 pointer, and thus it refuses the call.
 
 The compiler will refuse to call the method "by value" as any operations it makes
 on its dereferenced pointer will get lost as the callByPointer function is
-operating on a copy of `structInstance`
+operating on a copy of `structInstance`. The compiler _could_ have chosen to just
+add an `&` for us, but this would have been dangerous as the call would no longer
+be pass by value and the semantics might have changed.
 
-
-Instead we have to do the following
+Instead we have to be explicit about the pointer:
 ```go
 structInstance := myStruct{}
 callByPointer(&structInstance)

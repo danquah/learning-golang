@@ -70,16 +70,16 @@ We can defer the call of a function to when the scope is exited
 
 ```go
 func foo() {
-	fmt.Println("Foo")
+  fmt.Println("Foo")
 }
 
 func bar() {
-	fmt.Println("Bar")
+  fmt.Println("Bar")
 }
 
 func useDefer() {
-	defer foo()
-	bar()
+  defer foo()
+  bar()
 }
 // Outputs:
 // Bar
