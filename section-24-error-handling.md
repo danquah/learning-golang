@@ -1,4 +1,4 @@
-# Section 23: Error handling
+# Section 24: Error handling
 
 Gos approach to handling errors and potential errors, is to handle the issue
 as close as possible to where it occurs. This means handling an error the moment
